@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "14181589537",
+    "project_id": "obmenknigamikotlin",
+    "storage_bucket": "obmenknigamikotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14181589537:android:8a2888e1c8457fcccdb960",
+        "android_client_info": {
+          "package_name": "com.sad_ballala_projects.ObmenKnigami_Kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14181589537-luuig49l4gmgmo29sle6eunu03cn6dnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeCcdSlDAp1WgIp4if7oEDJ7lyPFsYqts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14181589537-luuig49l4gmgmo29sle6eunu03cn6dnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
