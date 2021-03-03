@@ -1,18 +1,23 @@
 package com.sad_ballala_projects.ObmenKnigami_Kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityMainBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogConst
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogHelper
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.GoogleAccConst
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +32,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val view = rootElement.root
         setContentView(view)
         init()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == GoogleAccConst.GOOGLE_SIGN_IN_REQUEST_CODE){
+            val task =GoogleSignIn.getSignedInAccountFromIntent(data)
+            try{
+                val account = task.getResult(ApiException::class.java)
+                if(account != null){
+                    Log.d("MyLog", "Api 0")
+                    dialogHelper.accHelper.signInFirebaseWithGoogle(account.idToken!!)
+                }
+
+            }catch(e:ApiException){
+                Log.d("MyLog", "Api error : ${e.message}")
+            }
+            //Log.d("MyLog", "Sign in result")
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onStart(){

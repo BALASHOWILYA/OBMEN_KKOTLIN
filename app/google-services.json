@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "14181589537-p14ja347rrk6rbqibvubupanjuslhqkn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sad_ballala_projects.ObmenKnigami_Kotlin",
+            "certificate_hash": "7ad6d811fe95f77985741bc78b8af8f2bb99650c"
+          }
+        },
+        {
           "client_id": "14181589537-luuig49l4gmgmo29sle6eunu03cn6dnp.apps.googleusercontent.com",
           "client_type": 3
         }
