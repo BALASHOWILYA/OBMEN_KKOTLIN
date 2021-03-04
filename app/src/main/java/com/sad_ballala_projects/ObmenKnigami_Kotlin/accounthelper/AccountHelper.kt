@@ -28,7 +28,9 @@ class AccountHelper(act:MainActivity) {
                     if (task.exception is FirebaseAuthUserCollisionException) {
                         val exception = task.exception as FirebaseAuthUserCollisionException
                         if (exception.errorCode == FirebaseAuthConstants.ERROR_EMAIL_ALREADY_IN_USE) {
-                            Toast.makeText(act, FirebaseAuthConstants.ERROR_EMAIL_ALREADY_IN_USE, Toast.LENGTH_LONG).show()
+                            //Toast.makeText(act, FirebaseAuthConstants.ERROR_EMAIL_ALREADY_IN_USE, Toast.LENGTH_LONG).show()
+                            //Link email
+                            linkEmailToG(email, password)
                         }
                     } else if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         val exception = task.exception as FirebaseAuthInvalidCredentialsException
@@ -77,6 +79,20 @@ class AccountHelper(act:MainActivity) {
                 }
 
             }
+        }
+    }
+
+    private fun linkEmailToG(email:String, password: String) {
+        val credential = EmailAuthProvider.getCredential(email, password)
+        if (act.myAuth.currentUser != null) {
+            act.myAuth.currentUser?.linkWithCredential(credential)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(act, act.resources.getString(R.string.link_is_done), Toast.LENGTH_LONG).show()
+                }
+
+            }
+        } else {
+            Toast.makeText(act, act.resources.getString(R.string.enter_to_g), Toast.LENGTH_LONG).show()
         }
     }
 
