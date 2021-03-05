@@ -63,11 +63,12 @@ class AccountHelper(act:MainActivity) {
                 if(task.isSuccessful){
                     act.uiUpdate(task.result?.user)
                 } else{
+                    Log.d("MyLog", "Exception :  ${task.exception} ")
                    // Log.d("MyLog", "Exception : ${task.exception}")
                     if(task.exception is FirebaseAuthInvalidCredentialsException) {
-                        Log.d("MyLog", "Exception :  ${task.exception} ")
+                        //Log.d("MyLog", "Exception :  ${task.exception} ")
                         val exception = task.exception as FirebaseAuthInvalidCredentialsException
-
+                        //Log.d("MyLog", "Exception :  ${exception.errorCode} ")
                         if (exception.errorCode == FirebaseAuthConstants.ERROR_INVALID_EMAIL) {
                             // Log.d("MyLog", "Exception :  ${exception.errorCode} ")
                             Toast.makeText(act, FirebaseAuthConstants.ERROR_INVALID_EMAIL, Toast.LENGTH_LONG).show()
@@ -75,6 +76,12 @@ class AccountHelper(act:MainActivity) {
                             // Log.d("MyLog", "Exception :  ${exception.errorCode} ")
                             Toast.makeText(act, FirebaseAuthConstants.ERROR_WRONG_PASSWORD, Toast.LENGTH_LONG).show()
                         }
+                    } else if(task.exception is FirebaseAuthInvalidUserException){
+                        val exception = task.exception as FirebaseAuthInvalidUserException
+                        if(exception.errorCode == FirebaseAuthConstants.ERROR_USER_NOT_FOUND){
+                            Toast.makeText(act, FirebaseAuthConstants.ERROR_USER_NOT_FOUND, Toast.LENGTH_LONG).show()
+                        }
+                        Log.d("MyLog", "Exception :  ${exception.errorCode} ")
                     }
                 }
 
@@ -110,6 +117,11 @@ class AccountHelper(act:MainActivity) {
         val intent = signInClient.signInIntent
         act.startActivityForResult(intent, GoogleAccConst.GOOGLE_SIGN_IN_REQUEST_CODE)
     }
+
+    fun signOutG(){
+        getSignInClient().signOut()
+    }
+
 
     fun signInFirebaseWithGoogle(token:String){
         val credential = GoogleAuthProvider.getCredential(token, null)
