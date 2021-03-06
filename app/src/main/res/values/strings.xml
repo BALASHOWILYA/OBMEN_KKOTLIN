@@ -60,5 +60,8 @@
     <!-- Sign Dialog -->
     <string name="link_is_done">Email успешно подключен к Google аккаунту!</string>
     <string name="enter_to_g">У вас уже есть аккаунт с этим Email адресом </string>
+    <!-- Edit Activity -->
+    <string name="select_country">*Выберите страну</string>
+    <string name="select_city">*Выберите город</string>
 
 </resources>
