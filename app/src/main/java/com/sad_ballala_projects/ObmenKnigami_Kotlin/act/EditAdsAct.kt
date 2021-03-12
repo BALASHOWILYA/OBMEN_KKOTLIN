@@ -22,6 +22,7 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImagePicker
 
 
 class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
+    private var chooseImageFrag : ImageListFrag? = null
     lateinit var rootElement:ActivityEditAdsBinding
     private val dialog = DialogSpinnerHelper()
     private var isImagesPermissionGranted = false
@@ -37,15 +38,24 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == ImagePicker.REQUEST_CODE_GET_IMAGES) {
-            if(data != null) {
+
+            if (data != null) {
+
                 val returnValues = data.getStringArrayListExtra(Pix.IMAGE_RESULTS)
-                    if(returnValues?.size!! > 1)
+
+                if (returnValues?.size!! > 1 && chooseImageFrag == null) {
+
+                    chooseImageFrag = ImageListFrag(this, returnValues)
                     rootElement.scroolViewMain.visibility = View.GONE
                     val fm = supportFragmentManager.beginTransaction()
-                    fm.replace(R.id.place_holder, ImageListFrag(this, returnValues))
+                    fm.replace(R.id.place_holder, chooseImageFrag!!)
                     fm.commit()
 
+                } else if (chooseImageFrag != null) {
 
+                    chooseImageFrag?.updateAdapter(returnValues)
+
+                }
             }
         }
     }
@@ -110,5 +120,6 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
     override fun onFragClose(list : ArrayList<SelectImageItem>) {
         rootElement.scroolViewMain.visibility = View.VISIBLE
         imageAdapter.update(list)
+        chooseImageFrag = null
     }
 }
