@@ -64,4 +64,9 @@
     <string name="select_country">*Выберите страну</string>
     <string name="select_city">*Выберите город</string>
 
+    <!-- Edit Activity -->
+    <string name="Main_photo"></string>
+    <string name="Second_photo"></string>
+    <string name="Third_photo"></string>
+
 </resources>
