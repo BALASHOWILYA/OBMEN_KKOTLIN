@@ -10,11 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.MessengerFragment
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ProfileFragment
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityMainBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogConst
@@ -23,6 +26,9 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.GoogleAccConst
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private val profileFragment = ProfileFragment()
+    private val messengerFragment = MessengerFragment()
+
     private lateinit var tvAccount:TextView
     private lateinit var rootElement: ActivityMainBinding
     private val dialogHelper = DialogHelper(this)
@@ -33,8 +39,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         rootElement = ActivityMainBinding.inflate(layoutInflater)
         val view = rootElement.root
         setContentView(view)
+        replaceFragment(messengerFragment)
+
+        rootElement.bottom.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.ic_profile -> replaceFragment(profileFragment)
+                R.id.ic_messenger -> replaceFragment(messengerFragment)
+            }
+            true
+        }
+
+
         init()
+
     }
+
+    private fun replaceFragment(fragment: Fragment){
+        if(fragment != null){
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, fragment )
+            transaction.commit()
+        }
+    }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.id_new_ads){
