@@ -24,6 +24,8 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
     private val dialog = DialogSpinnerHelper()
     private var isImagesPermissionGranted = false
     private  lateinit var imageAdapter : ImageAdapter
+    var editImagePos = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,14 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
 
                 }
             }
+        } else if (resultCode == RESULT_OK && requestCode == ImagePicker.REQUEST_CODE_GET_SINGLE_IMAGES){
+            if (data != null) {
+
+                val uris = data.getStringArrayListExtra(Pix.IMAGE_RESULTS)
+                chooseImageFrag?.setSingleImage(uris?.get(0)!!,editImagePos)
+            }
         }
+
     }
 
     override fun onRequestPermissionsResult(
@@ -63,7 +72,7 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
 
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    ImagePicker.getImages(this, 3)
+                    ImagePicker.getImages(this, 3, ImagePicker.REQUEST_CODE_GET_IMAGES)
                 } else {
                     isImagesPermissionGranted = false
                     Toast.makeText(
@@ -110,7 +119,7 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
 
         if(imageAdapter.mainArray.size == 0){
 
-            ImagePicker.getImages(this,3)
+            ImagePicker.getImages(this,3, ImagePicker.REQUEST_CODE_GET_IMAGES)
 
         } else{
             openChooseImageFrag(imageAdapter.mainArray)

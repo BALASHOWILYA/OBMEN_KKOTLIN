@@ -6,11 +6,12 @@ import com.fxn.pix.Pix
 
 object ImagePicker {
     const val REQUEST_CODE_GET_IMAGES = 999
+    const val REQUEST_CODE_GET_SINGLE_IMAGES = 998
     const val MAX_IMAGE_COUNT = 3
 
-    fun getImages(context: AppCompatActivity, imageCounter : Int){
+    fun getImages(context: AppCompatActivity, imageCounter : Int, rCode : Int){
         val options = Options.init()
-            .setRequestCode(REQUEST_CODE_GET_IMAGES)                                           //Request code for activity results
+            .setRequestCode(rCode)                                           //Request code for activity results
             .setCount(imageCounter)                                                   //Number of images to restict selection count
             .setFrontfacing(false)                                         //Front Facing camera on start             //Pre selected Image Urls
             .setMode(Options.Mode.Picture)                                     //Option to select only pictures or videos or both
