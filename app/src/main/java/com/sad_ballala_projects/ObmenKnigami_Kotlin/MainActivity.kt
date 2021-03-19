@@ -28,7 +28,7 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.GoogleAccConst
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val profileFragment = ProfileFragment()
     private val messengerFragment = MessengerFragment()
-
+    private val addAdsAct = EditAdsAct()
     private lateinit var tvAccount:TextView
     private lateinit var rootElement: ActivityMainBinding
     private val dialogHelper = DialogHelper(this)
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             when(it.itemId){
                 R.id.ic_profile -> replaceFragment(profileFragment)
                 R.id.ic_messenger -> replaceFragment(messengerFragment)
+                R.id.ic_add_ads -> startActivity(Intent(this, EditAdsAct::class.java))
             }
             true
         }
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun init(){
+
         setSupportActionBar(rootElement.mainContent.toolbar)
        var  toggle = ActionBarDrawerToggle(this,rootElement.drawerLayout,rootElement.mainContent.toolbar,R.string.open,R.string.close)
         rootElement.drawerLayout.addDrawerListener(toggle)
