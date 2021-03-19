@@ -16,8 +16,10 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ListOfBooksFragment
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.MessengerFragment
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ProfileFragment
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.RequestFragment
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityMainBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogConst
@@ -28,7 +30,9 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.GoogleAccConst
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val profileFragment = ProfileFragment()
     private val messengerFragment = MessengerFragment()
-    private val addAdsAct = EditAdsAct()
+    private val requestAds = RequestFragment()
+    private val list_of_books = ListOfBooksFragment()
+
     private lateinit var tvAccount:TextView
     private lateinit var rootElement: ActivityMainBinding
     private val dialogHelper = DialogHelper(this)
@@ -46,6 +50,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.ic_profile -> replaceFragment(profileFragment)
                 R.id.ic_messenger -> replaceFragment(messengerFragment)
                 R.id.ic_add_ads -> startActivity(Intent(this, EditAdsAct::class.java))
+                R.id.ic_request_ads -> replaceFragment(requestAds)
+                R.id.ic_list_books -> replaceFragment(list_of_books)
             }
             true
         }

@@ -4,7 +4,7 @@
 
     <item android:title="New ad"
         android:id="@+id/id_new_ads"
-        android:icon="@drawable/ic_new_ads"
+        android:icon="@drawable/ic_add_ads"
         app:showAsAction="ifRoom"
         />
 
