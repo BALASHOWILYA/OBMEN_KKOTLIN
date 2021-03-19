@@ -7,10 +7,6 @@
         android:icon="@drawable/ic_new_ads"
         app:showAsAction="ifRoom"
         />
-    <item android:title="N"
-        android:id="@+id/good"
-        android:icon="@drawable/ic_new_ads"
-        app:showAsAction="ifRoom"
-        />
+
 
 </menu>
