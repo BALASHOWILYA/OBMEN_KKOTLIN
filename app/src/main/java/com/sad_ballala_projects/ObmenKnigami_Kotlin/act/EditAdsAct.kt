@@ -46,11 +46,16 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
 
                     openChooseImageFrag(returnValues)
 
+                }else if (returnValues.size == 1 && chooseImageFrag == null) {
+
+                    imageAdapter.update(returnValues)
+
                 } else if (chooseImageFrag != null) {
 
                     chooseImageFrag?.updateAdapter(returnValues)
 
                 }
+
             }
         } else if (resultCode == RESULT_OK && requestCode == ImagePicker.REQUEST_CODE_GET_SINGLE_IMAGES){
             if (data != null) {
