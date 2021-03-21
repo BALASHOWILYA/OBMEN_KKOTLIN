@@ -1,5 +1,6 @@
 package com.sad_ballala_projects.ObmenKnigami_Kotlin
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,17 +11,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ListOfBooksFragment
-import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.MessengerFragment
-import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ProfileFragment
-import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.RequestFragment
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.RequestAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityMainBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogConst
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogHelper
@@ -28,10 +25,9 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.GoogleAccConst
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private val profileFragment = ProfileFragment()
-    private val messengerFragment = MessengerFragment()
-    private val requestAds = RequestFragment()
-    private val list_of_books = ListOfBooksFragment()
+
+    private  val EditAdsActivity = EditAdsAct()
+    private  val RequestAdsActivity = RequestAdsAct()
 
     private lateinit var tvAccount:TextView
     private lateinit var rootElement: ActivityMainBinding
@@ -45,39 +41,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(view)
         //replaceFragment(list_of_books)
 
-        rootElement.bottom.bottomNavigation.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.profileFragment -> replaceFragment(profileFragment)
-                R.id.messengerFragment -> replaceFragment(messengerFragment)
-                R.id.ic_add_ads -> startActivity(Intent(this, EditAdsAct::class.java))
-                R.id.requestFragment -> replaceFragment(requestAds)
-                R.id.listOfBooksFragment -> replaceFragment(list_of_books)
-            }
-            true
-        }
-
-
         init()
 
     }
 
-    private fun replaceFragment(fragment: Fragment){
-        if(fragment != null){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment )
-            transaction.commit()
-        }
+
+    private  fun chooseAct(activity: Activity){
+        val i = Intent(this, activity::class.java)
+        startActivity(i)
     }
 
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.id_new_ads){
-            val i = Intent(this, EditAdsAct::class.java)
-            startActivity(i)
+
+        when(item.itemId){
+            R.id.id_new_ads -> chooseAct(EditAdsActivity)
+            R.id.requestFragment -> chooseAct(RequestAdsActivity)
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)

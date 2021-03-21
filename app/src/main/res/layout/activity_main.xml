@@ -15,11 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <include
-        android:id="@+id/bottom"
-        layout="@layout/nav_host"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"

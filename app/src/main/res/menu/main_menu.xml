@@ -6,7 +6,26 @@
         android:id="@+id/id_new_ads"
         android:icon="@drawable/ic_add_ads"
         app:showAsAction="ifRoom"
+        android:orderInCategory="200"
         />
+
+    <item
+        android:id="@+id/messengerFragment"
+        android:icon="@drawable/ic_messenger"
+        android:title="Messenger"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="100"
+        />
+
+    <item
+        android:id="@+id/requestFragment"
+        android:icon="@drawable/ic_request_ads"
+        android:title="RequestAds"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="0"
+        />
+
+
 
 
 </menu>
