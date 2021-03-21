@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ic_list_books"
+        android:id="@+id/listOfBooksFragment"
         android:icon="@drawable/ic_list_of_books"
         android:title="ListOfBooks" />
 
     <item
-        android:id="@+id/ic_request_ads"
+        android:id="@+id/requestFragment"
         android:icon="@drawable/ic_request_ads"
         android:title="RequestAds" />
 
@@ -18,12 +18,12 @@
         android:title="AddAds" />
 
     <item
-        android:id="@+id/ic_messenger"
+        android:id="@+id/messengerFragment"
         android:icon="@drawable/ic_messenger"
         android:title="Messenger" />
 
     <item
-        android:id="@+id/ic_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="Profile" />
 

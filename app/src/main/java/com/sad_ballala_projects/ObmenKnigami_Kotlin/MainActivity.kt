@@ -43,15 +43,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         rootElement = ActivityMainBinding.inflate(layoutInflater)
         val view = rootElement.root
         setContentView(view)
-
+        //replaceFragment(list_of_books)
 
         rootElement.bottom.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.ic_profile -> replaceFragment(profileFragment)
-                R.id.ic_messenger -> replaceFragment(messengerFragment)
+                R.id.profileFragment -> replaceFragment(profileFragment)
+                R.id.messengerFragment -> replaceFragment(messengerFragment)
                 R.id.ic_add_ads -> startActivity(Intent(this, EditAdsAct::class.java))
-                R.id.ic_request_ads -> replaceFragment(requestAds)
-                R.id.ic_list_books -> replaceFragment(list_of_books)
+                R.id.requestFragment -> replaceFragment(requestAds)
+                R.id.listOfBooksFragment -> replaceFragment(list_of_books)
             }
             true
         }

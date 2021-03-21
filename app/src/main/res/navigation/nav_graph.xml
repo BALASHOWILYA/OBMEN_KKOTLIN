@@ -9,50 +9,25 @@
         android:id="@+id/listOfBooksFragment"
         android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ListOfBooksFragment"
         android:label="fragment_list_of_books"
-        tools:layout="@layout/fragment_list_of_books" >
-        <action
-            android:id="@+id/action_listOfBooksFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_listOfBooksFragment_to_messengerFragment"
-            app:destination="@id/messengerFragment" />
-        <action
-            android:id="@+id/action_listOfBooksFragment_to_requestFragment"
-            app:destination="@id/requestFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_list_of_books" />
     <fragment
         android:id="@+id/messengerFragment"
         android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.MessengerFragment"
         android:label="fragment_messenger"
-        tools:layout="@layout/fragment_messenger" >
-        <action
-            android:id="@+id/action_messengerFragment_to_listOfBooksFragment"
-            app:destination="@id/listOfBooksFragment" />
-        <action
-            android:id="@+id/action_messengerFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_messengerFragment_to_requestFragment"
-            app:destination="@id/requestFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_messenger" />
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.RequestFragment"
         android:label="fragment_request"
-        tools:layout="@layout/fragment_request" >
-        <action
-            android:id="@+id/action_requestFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_requestFragment_to_listOfBooksFragment"
-            app:destination="@id/listOfBooksFragment" />
-        <action
-            android:id="@+id/action_requestFragment_to_messengerFragment"
-            app:destination="@id/messengerFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_request" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/editAdsAct"
+        android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct"
+        android:label="activity_edit_ads"
+        tools:layout="@layout/activity_edit_ads" />
 </navigation>

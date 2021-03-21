@@ -17,7 +17,7 @@
 
     <include
         android:id="@+id/bottom"
-        layout="@layout/bottom_navigation_content"
+        layout="@layout/nav_host"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
