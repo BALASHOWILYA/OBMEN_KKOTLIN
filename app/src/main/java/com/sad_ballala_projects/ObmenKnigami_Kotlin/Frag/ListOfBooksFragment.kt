@@ -9,10 +9,6 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.R
 
 class ListOfBooksFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
 
     override fun onCreateView(

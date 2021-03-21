@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listOfBooksFragment">
+
+    <fragment
+        android:id="@+id/listOfBooksFragment"
+        android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ListOfBooksFragment"
+        android:label="fragment_list_of_books"
+        tools:layout="@layout/fragment_list_of_books" >
+        <action
+            android:id="@+id/action_listOfBooksFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_listOfBooksFragment_to_messengerFragment"
+            app:destination="@id/messengerFragment" />
+        <action
+            android:id="@+id/action_listOfBooksFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messengerFragment"
+        android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.MessengerFragment"
+        android:label="fragment_messenger"
+        tools:layout="@layout/fragment_messenger" >
+        <action
+            android:id="@+id/action_messengerFragment_to_listOfBooksFragment"
+            app:destination="@id/listOfBooksFragment" />
+        <action
+            android:id="@+id/action_messengerFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_messengerFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" >
+        <action
+            android:id="@+id/action_requestFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_requestFragment_to_listOfBooksFragment"
+            app:destination="@id/listOfBooksFragment" />
+        <action
+            android:id="@+id/action_requestFragment_to_messengerFragment"
+            app:destination="@id/messengerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

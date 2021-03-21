@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         rootElement = ActivityMainBinding.inflate(layoutInflater)
         val view = rootElement.root
         setContentView(view)
-        replaceFragment(messengerFragment)
+
 
         rootElement.bottom.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){

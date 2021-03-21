@@ -11,11 +11,6 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.R
 class RequestFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
