@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.RequestAdsAct
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.MessengerAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityMainBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogConst
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.gialogshelper.DialogHelper
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private  val EditAdsActivity = EditAdsAct()
     private  val RequestAdsActivity = RequestAdsAct()
+    private  val MessengerAct = MessengerAct()
 
     private lateinit var tvAccount:TextView
     private lateinit var rootElement: ActivityMainBinding
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId){
             R.id.id_new_ads -> chooseAct(EditAdsActivity)
             R.id.requestFragment -> chooseAct(RequestAdsActivity)
+            R.id.messengerFragment -> chooseAct(MessengerAct)
         }
         return super.onOptionsItemSelected(item)
     }

@@ -47,6 +47,7 @@ class DialogHelper(act:MainActivity) {
         }
     }
 
+
     private fun setOnClickSignUpIn(index: Int, rootDialogElement: SignDialogBinding, dialog: AlertDialog?) {
         dialog?.dismiss()
         if(index == DialogConst.SIGN_UP_STATE){
@@ -62,6 +63,7 @@ class DialogHelper(act:MainActivity) {
 
         if(index == DialogConst.SIGN_UP_STATE){
             rootDialogElement.tvSignTitle.text = act.resources.getString(R.string.ac_sign_up)
+            rootDialogElement.editTextTextPersonName.visibility = View.VISIBLE
             rootDialogElement.btSignUpIn.text = act.resources.getString(R.string.sign_up_action)
         }else{
             rootDialogElement.tvSignTitle.text = act.resources.getString(R.string.ac_sign_in)
