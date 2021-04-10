@@ -3,6 +3,7 @@ package com.sad_ballala_projects.ObmenKnigami_Kotlin.act
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.adapters.ImageAdapter
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ActivityEditAdsBinding
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.dialogs.DialogSpinnerHelper
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.CityHelper
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImageManager
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImagePicker
 
 
@@ -48,7 +50,11 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
 
                 }else if (returnValues.size == 1 && chooseImageFrag == null) {
 
-                    imageAdapter.update(returnValues)
+                   // imageAdapter.update(returnValues)
+                    val tempList = ImageManager.getImageSize(returnValues[0])
+                    Log.d("MyLog", "Imaga width : ${tempList[0]}")
+                    Log.d("MyLog", "Imaga height : ${tempList[1]}")
+
 
                 } else if (chooseImageFrag != null) {
 

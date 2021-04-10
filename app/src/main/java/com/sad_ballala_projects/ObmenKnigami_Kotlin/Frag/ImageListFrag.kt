@@ -13,14 +13,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.R
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.databinding.ListImageFragBinding
+import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImageManager
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImagePicker
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ItemTouchMoveCallback
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class ImageListFrag(private val fragCloseInterface : FragmentCloseInterface, private val newList : ArrayList<String>) : Fragment(){
     lateinit var rootElement : ListImageFragBinding
     val adapter = SelectImageRvAdapter()
     val dragCallback = ItemTouchMoveCallback(adapter)
     val touchHelper = ItemTouchHelper(dragCallback)
+
+    private lateinit var job: Job
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootElement = ListImageFragBinding.inflate(inflater)
         return rootElement.root
@@ -33,13 +41,22 @@ class ImageListFrag(private val fragCloseInterface : FragmentCloseInterface, pri
         touchHelper.attachToRecyclerView(rootElement.rcViewSelectImage)
         rootElement.rcViewSelectImage.layoutManager = LinearLayoutManager(activity)
         rootElement.rcViewSelectImage.adapter = adapter
-        adapter.updateAdapter(newList, true)
+        // корутина создается на основном потоке, а сама функция на второстепенном потоке
+        job = CoroutineScope(Dispatchers.Main).launch{
+            // так как функции suspend задачи запускаются последовально. То есть вторая
+            // строчка кода не закончится пока жива первая строчка кода
+            val text = ImageManager.imageResize(newList)
+            Log.d("MyLog", "Result : $text")
+        }
+
+        //adapter.updateAdapter(newList, true)
 
     }
 
     override fun onDetach() {
         super.onDetach()
         fragCloseInterface.onFragClose(adapter.mainArray)
+        job.cancel()
 
     }
 
