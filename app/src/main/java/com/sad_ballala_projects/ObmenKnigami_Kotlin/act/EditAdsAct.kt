@@ -2,6 +2,7 @@ package com.sad_ballala_projects.ObmenKnigami_Kotlin.act
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -134,19 +135,20 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
             ImagePicker.getImages(this,3, ImagePicker.REQUEST_CODE_GET_IMAGES)
 
         } else{
-            openChooseImageFrag(imageAdapter.mainArray)
+            openChooseImageFrag(null)
+            chooseImageFrag?.updateAdapterFromEdit(imageAdapter.mainArray)
         }
 
 
     }
 
-    override fun onFragClose(list : ArrayList<String>) {
+    override fun onFragClose(list : ArrayList<Bitmap>) {
         rootElement.scroolViewMain.visibility = View.VISIBLE
         imageAdapter.update(list)
         chooseImageFrag = null
     }
 
-    private fun openChooseImageFrag(newList : ArrayList<String>){
+    private fun openChooseImageFrag(newList : ArrayList<String>?){
 
         chooseImageFrag = ImageListFrag(this, newList)
         rootElement.scroolViewMain.visibility = View.GONE

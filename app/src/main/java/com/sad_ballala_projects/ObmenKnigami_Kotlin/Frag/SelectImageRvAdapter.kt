@@ -1,12 +1,14 @@
 package com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.R
@@ -15,7 +17,7 @@ import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ImagePicker
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.utils.ItemTouchMoveCallback
 
 class SelectImageRvAdapter : RecyclerView.Adapter<SelectImageRvAdapter.ImageHolder>(), ItemTouchMoveCallback.ItemTouchAdapter{
-    val mainArray = ArrayList<String>()
+    val mainArray = ArrayList<Bitmap>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.select_image_frag_item, parent, false)
@@ -48,13 +50,16 @@ class SelectImageRvAdapter : RecyclerView.Adapter<SelectImageRvAdapter.ImageHold
         lateinit var image : ImageView
         lateinit var imDeleteImage : ImageView
 
-        fun setData(item : String){
+
+        fun setData(bitMap : Bitmap){
             tvTitle = itemView.findViewById(R.id.tvTitle)
             image = itemView.findViewById(R.id.imageContent)
             imEditImage= itemView.findViewById(R.id.imEditImage)
             imDeleteImage= itemView.findViewById(R.id.imDelete)
 
+
             imEditImage.setOnClickListener {
+
                 ImagePicker.getImages(context as EditAdsAct, 1, ImagePicker.REQUEST_CODE_GET_SINGLE_IMAGES)
                 context.editImagePos = adapterPosition
             }
@@ -69,11 +74,11 @@ class SelectImageRvAdapter : RecyclerView.Adapter<SelectImageRvAdapter.ImageHold
             }
 
             tvTitle.text = context.resources.getStringArray(R.array.title_array)[adapterPosition]
-            image.setImageURI(Uri.parse(item))
+            image.setImageBitmap(bitMap)
 
         }
     }
-    fun updateAdapter(newList : List<String>, needClear : Boolean){
+    fun updateAdapter(newList : List<Bitmap>, needClear : Boolean){
         if(needClear)mainArray.clear()
         mainArray.addAll(newList)
         notifyDataSetChanged()
