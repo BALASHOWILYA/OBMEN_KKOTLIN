@@ -16,6 +16,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.EditAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.RequestAdsAct
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.act.MessengerAct
@@ -101,6 +102,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         rootElement.navView.setNavigationItemSelectedListener (this)
         tvAccount = rootElement.navView.getHeaderView(0).findViewById(R.id.tvAccountEmail)
+
+        
 
     }
 
