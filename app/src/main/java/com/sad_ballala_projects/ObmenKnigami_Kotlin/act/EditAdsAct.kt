@@ -3,6 +3,7 @@ package com.sad_ballala_projects.ObmenKnigami_Kotlin.act
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fxn.pix.Pix
 import com.fxn.utility.PermUtil
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.FragmentCloseInterface
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.Frag.ImageListFrag
 import com.sad_ballala_projects.ObmenKnigami_Kotlin.R
@@ -34,6 +38,8 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
         super.onCreate(savedInstanceState)
         rootElement = ActivityEditAdsBinding.inflate(layoutInflater)
         setContentView(rootElement.root)
+
+
         init()
     }
 
@@ -71,6 +77,7 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
     private  fun init(){
         imageAdapter = ImageAdapter()
         rootElement.vpimages.adapter = imageAdapter
+
     }
 
     //Onclicks
@@ -126,4 +133,6 @@ class EditAdsAct : AppCompatActivity(), FragmentCloseInterface  {
         fm.commit()
 
     }
+
+
 }

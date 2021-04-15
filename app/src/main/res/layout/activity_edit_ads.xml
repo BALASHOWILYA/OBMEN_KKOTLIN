@@ -87,6 +87,34 @@
                 android:text="@string/select_city"
                 android:textColor="@color/black" />
 
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:hint="@string/edit_book_name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:hint="@string/edit_phone"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/edit_discription"
+                android:inputType="textMultiLine|textPersonName" />
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

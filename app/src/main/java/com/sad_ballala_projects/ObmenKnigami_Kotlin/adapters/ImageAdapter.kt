@@ -1,6 +1,7 @@
 package com.sad_ballala_projects.ObmenKnigami_Kotlin.adapters
 
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -33,11 +34,16 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
             imItem.setImageBitmap(bitmap)
         }
     }
+    fun uploadImage(){
+        
+    }
+
 
     fun update(newList : ArrayList<Bitmap>){
         mainArray.clear()
         mainArray.addAll(newList)
         notifyDataSetChanged()
     }
+
 
 }
